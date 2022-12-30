@@ -18,7 +18,6 @@ const useStyle = createUseStyles({
     borderRadius: '0 100px 0 0',
     border: 'none !important'
   },
-
   ticketButtonIcon: {
     fontSize: '26px',
     transform: 'rotate(45deg)',
@@ -33,7 +32,7 @@ export default function TicketWidget (props) {
   const classes = useStyle()
 
   const content = ({ close }) => (
-    <Pane width={350} height={700} paddingX={12} paddingTop={12} paddingBottom={12} display='flex' alignItems='center' justifyContent='center' flexDirection='column'>
+    <Pane width={350} height={700} paddingX={12} paddingTop={12} paddingBottom={12} zIndex={100} display='flex' alignItems='center' justifyContent='center' flexDirection='column'>
       {loading ? <Spinner marginX='auto' marginY={120} /> : null}
       <iframe style={{ minWidth: 300, height: 650, border: 'none', background: 'unset' }} src='http://localhost:3000/tickets' onLoad={() => setLoading(false)} />
       <img src='http://localhost:3000/logo_isy.png' style={{ display: 'block', margin: 'auto', maxHeight: 40 }} />
