@@ -2,11 +2,9 @@ import React, { useState } from 'react'
 import { createUseStyles } from 'react-jss'
 import { BugOutlined } from '@ant-design/icons'
 import { Popover, Button, Tooltip, Layout, Spin } from 'antd'
-
 import ISYLogo from '../../assets/isy.png'
 
 const { Content } = Layout
-
 
 const useStyles = createUseStyles({
   ticketButton: {
@@ -36,22 +34,24 @@ const useStyles = createUseStyles({
   }
 })
 
-export default function (params) {
+export default function TicketWidget (props) {
   const [visiblePopover, setVisiblePopover] = useState(false)
   const [visibleTooltip, setVisibleTooltip] = useState(false)
   const [loading, setLoading] = useState(true)
   const classes = useStyles()
 
+  const content = (
+    <Content>
+      <Spin spinning={loading}>
+        <iframe style={{ minWidth: 300, height: 650, border: 'none', background: 'unset' }} src='http://localhost:3000/tickets' onLoad={() => setLoading(false)} />
+        <img src={ISYLogo} style={{ display: 'block', margin: 'auto', maxHeight: 50 }} />
+      </Spin>
+    </Content>
+  )
+
   return (
     <Tooltip title='Asistencia o Ayuda' placement='topLeft' open={!visiblePopover && visibleTooltip} onMouseEnter={() => setVisibleTooltip(true)} onMouseLeave={() => setVisibleTooltip(false)}>
-      <Popover destroyTooltipOnHide overlayClassName={classes.ticketContent} placement='topLeft' content={(
-        <Content>
-          <Spin spinning={loading}>
-            <iframe style={{ minWidth: 300, height: 650, border: 'none', background: 'unset' }} src='http://localhost:3000/tickets' onLoad={() => setLoading(false)} />
-            <img src={ISYLogo}  style={{ display: 'block', margin: 'auto', maxHeight: 50 }} />
-          </Spin>
-        </Content>
-      )} trigger='click' onOpenChange={setVisiblePopover}>
+      <Popover destroyTooltipOnHide overlayClassName={classes.ticketContent} placement='topLeft' content={content} trigger='click' onOpenChange={setVisiblePopover}>
         <Button type='primary' size='large' className={classes.ticketButton} icon={<BugOutlined className={classes.ticketButtonIcon} style={{ color: 'currentColor' }} />} />
       </Popover>
     </Tooltip>
