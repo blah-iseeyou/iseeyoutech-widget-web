@@ -37,6 +37,7 @@
     "jss": "^10.9.2",
     "normalize.css": "^8.0.1",
     "react-icons": "^4.7.1",
+    "react-jss": "^10.9.2",
     "socket.io-client": "^4.5.4"
   }
 }
