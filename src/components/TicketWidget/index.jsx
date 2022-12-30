@@ -1,61 +1,22 @@
 import React, { useState } from 'react'
-import { createUseStyles } from 'react-jss'
-import { BugOutlined } from '@ant-design/icons'
-import { Popover, Button, Tooltip, Layout, Spin, ConfigProvider } from 'antd'
-import ISYLogo from '../../assets/isy.png'
+import { Popover, Pane, Button, Spinner } from 'evergreen-ui'
+import { AiFillBug } from 'react-icons/ai'
 
-const { Content } = Layout
-
-const useStyles = createUseStyles({
-  ticketButton: {
-    background: 'linear-gradient(126.63deg, #2D348C 11.98%, #2D348C 83.35%)',
-    position: 'fixed',
-    bottom: 0,
-    left: 0,
-    borderRadius: '0 150px 0 0 !important',
-    boxShadow: '0px 0px 10px 3px rgba(0, 0, 0, 0.32)'
-  },
-  ticketButtonIcon: {
-    position: 'relative',
-    top: 5,
-    right: 5,
-    fontSize: 20
-  },
-  ticketContent: {
-    '& .widget-isy-popover-inner': {
-      padding: '12px !important'
-    }
-  },
-  content: {
-    position: 'relative',
-    top: 5,
-    right: 5,
-    fontSize: 20
-  }
-})
+import './index.css'
 
 export default function TicketWidget (props) {
-  const [visiblePopover, setVisiblePopover] = useState(false)
-  const [visibleTooltip, setVisibleTooltip] = useState(false)
   const [loading, setLoading] = useState(true)
-  const classes = useStyles()
 
-  const content = (
-    <Content>
-      <Spin spinning={loading}>
-        <iframe style={{ minWidth: 300, height: 650, border: 'none', background: 'unset' }} src='http://localhost:3000/tickets' onLoad={() => setLoading(false)} />
-        <img src={ISYLogo} style={{ display: 'block', margin: 'auto', maxHeight: 50 }} />
-      </Spin>
-    </Content>
+  const content = ({ close }) => (
+    <Pane width={350} height={700} paddingX={12} paddingTop={12} paddingBottom={12} display='flex' alignItems='center' justifyContent='center' flexDirection='column'>
+      {loading ? <Spinner marginX='auto' marginY={120} /> : null}
+      <iframe style={{ minWidth: 300, height: 650, border: 'none', background: 'unset' }} src='http://localhost:3000/tickets' onLoad={() => setLoading(false)} />
+      <img src='http://localhost:3000/logo_isy.png' style={{ display: 'block', margin: 'auto', maxHeight: 40 }} />
+    </Pane>
   )
-
   return (
-    <ConfigProvider prefixCls='widget-isy'>
-      <Tooltip title='Asistencia o Ayuda' placement='topLeft' open={!visiblePopover && visibleTooltip} onMouseEnter={() => setVisibleTooltip(true)} onMouseLeave={() => setVisibleTooltip(false)}>
-        <Popover destroyTooltipOnHide overlayClassName={classes.ticketContent} placement='topLeft' content={content} trigger='click' onOpenChange={setVisiblePopover}>
-          <Button type='primary' size='large' className={classes.ticketButton} icon={<BugOutlined className={classes.ticketButtonIcon} style={{ color: 'currentColor' }} />} />
-        </Popover>
-      </Tooltip>
-    </ConfigProvider>
+    <Popover shouldCloseOnExternalClick shouldCloseOnEscapePress content={content}>
+      <Button appearance='primary' size='large' className='ticket-button'><AiFillBug className='ticket-button-icon' /></Button>
+    </Popover>
   )
 }
