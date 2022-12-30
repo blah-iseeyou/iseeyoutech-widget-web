@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { createUseStyles } from 'react-jss'
 import { BugOutlined } from '@ant-design/icons'
-import { Popover, Button, Tooltip, Layout, Spin } from 'antd'
+import { Popover, Button, Tooltip, Layout, Spin, ConfigProvider } from 'antd'
 import ISYLogo from '../../assets/isy.png'
 
 const { Content } = Layout
@@ -22,7 +22,7 @@ const useStyles = createUseStyles({
     fontSize: 20
   },
   ticketContent: {
-    '& .ant-popover-inner': {
+    '& .widget-isy-popover-inner': {
       padding: '12px !important'
     }
   },
@@ -50,10 +50,12 @@ export default function TicketWidget (props) {
   )
 
   return (
-    <Tooltip title='Asistencia o Ayuda' placement='topLeft' open={!visiblePopover && visibleTooltip} onMouseEnter={() => setVisibleTooltip(true)} onMouseLeave={() => setVisibleTooltip(false)}>
-      <Popover destroyTooltipOnHide overlayClassName={classes.ticketContent} placement='topLeft' content={content} trigger='click' onOpenChange={setVisiblePopover}>
-        <Button type='primary' size='large' className={classes.ticketButton} icon={<BugOutlined className={classes.ticketButtonIcon} style={{ color: 'currentColor' }} />} />
-      </Popover>
-    </Tooltip>
+    <ConfigProvider prefixCls='widget-isy'>
+      <Tooltip title='Asistencia o Ayuda' placement='topLeft' open={!visiblePopover && visibleTooltip} onMouseEnter={() => setVisibleTooltip(true)} onMouseLeave={() => setVisibleTooltip(false)}>
+        <Popover destroyTooltipOnHide overlayClassName={classes.ticketContent} placement='topLeft' content={content} trigger='click' onOpenChange={setVisiblePopover}>
+          <Button type='primary' size='large' className={classes.ticketButton} icon={<BugOutlined className={classes.ticketButtonIcon} style={{ color: 'currentColor' }} />} />
+        </Popover>
+      </Tooltip>
+    </ConfigProvider>
   )
 }
