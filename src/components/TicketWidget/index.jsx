@@ -37,13 +37,13 @@ const useStyle = createUseStyles({
     right: '5px'
   },
   wPopOver: props => ({
-
+    zIndex: 10000,
     background: 'white',
     padding: 12,
     position: 'fixed',
     bottom: 10,
     left: 10,
-    width: 300,
+    width: 324,
     height: 700,
     borderRadius: 6,
     boxShadow: '0px 0px 10px 3px rgba(0, 0, 0, 0.20)',
