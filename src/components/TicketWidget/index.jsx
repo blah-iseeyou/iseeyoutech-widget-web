@@ -49,9 +49,7 @@ const useStyle = createUseStyles({
     boxShadow: '0px 0px 10px 3px rgba(0, 0, 0, 0.20)',
     animation: props.animation
   }),
-
   iframeISY: { minWidth: 300, height: 650, border: 'none', background: 'unset' },
-
   '@keyframes slideFromBottom ': {
     from: { transform: 'translateY(100%)' },
     to: { transform: 'translateY(0)' }
@@ -68,7 +66,10 @@ function FrameContainer (props) {
     hidePopup = () => {},
     classes = { iframeISY: {}, wPopOver: {} },
     loading,
-    setLoading
+    setLoading,
+    name,
+    email,
+    project
   } = props
 
   useEffect(() => {
@@ -85,7 +86,7 @@ function FrameContainer (props) {
 
   return (
     <div id='isy-container' className={classes.wPopOver}>
-      <iframe className={classes.iframeISY} src={url + '/tickets'} onLoad={() => setLoading(false)} />
+      <iframe className={classes.iframeISY} src={url + `/tickets/${encodeURI(project)}/${encodeURI(name)}/${encodeURI(email)}/`} onLoad={() => setLoading(false)} />
       {loading ? (
         <svg xmlns='http://www.w3.org/2000/svg' width='100px' height='100px' viewBox='0 0 100 100' style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translateX(-50%) translateY(-50%)' }}>
           <path d='M 50,50 L 33,60.5 a 20 20 -210 1 1 34,0 z' fill='lightgray'>
@@ -103,10 +104,14 @@ FrameContainer.propTypes = {
   hidePopup: propTypes.func,
   classes: propTypes.object,
   loading: propTypes.bool,
-  setLoading: propTypes.func
+  setLoading: propTypes.func,
+  name: propTypes.any,
+  email: propTypes.any,
+  project: propTypes.any
 }
 
-export default function TicketWidget (props) {
+function TicketWidget (props) {
+  const { name, email, project } = props
   const [loading, setLoading] = useState(true)
   const [popOverVisible, setPopOverVisible] = useState(0)
   const classes = useStyle({
@@ -133,7 +138,15 @@ export default function TicketWidget (props) {
       <button className={classes.ticketButton} onClick={onClickButton}>
         {(popOverVisible !== 0) ? <AiFillPlusCircle className={classes.ticketButtonIcon} /> : <AiFillBug className={classes.ticketButtonIcon} />}
       </button>
-      {(popOverVisible !== 0) ? <FrameContainer hidePopup={hidePopup} classes={classes} loading={loading} setLoading={setLoading} popOverVisible={popOverVisible} setPopOverVisible={setPopOverVisible} /> : null}
+      {(popOverVisible !== 0) ? <FrameContainer project={project} name={name} email={email} hidePopup={hidePopup} classes={classes} loading={loading} setLoading={setLoading} popOverVisible={popOverVisible} setPopOverVisible={setPopOverVisible} /> : null}
     </>
   )
 }
+
+TicketWidget.propTypes = {
+  name: propTypes.any,
+  email: propTypes.any,
+  project: propTypes.any
+}
+
+export default TicketWidget
