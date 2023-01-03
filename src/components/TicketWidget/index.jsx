@@ -26,7 +26,7 @@ const useStyle = createUseStyles({
       bottom: 10,
       left: 10
     },
-    zIndex: 100
+    zIndex: 10001
 
   },
   ticketButtonIcon: {
@@ -37,14 +37,14 @@ const useStyle = createUseStyles({
     right: '5px'
   },
   wPopOver: props => ({
-    zIndex: 10000,
+    zIndex: 1000,
     background: 'white',
     padding: 12,
     position: 'fixed',
     bottom: 10,
     left: 10,
     width: 324,
-    height: 700,
+    height: '725px',
     borderRadius: 6,
     boxShadow: '0px 0px 10px 3px rgba(0, 0, 0, 0.20)',
     animation: props.animation
@@ -94,7 +94,7 @@ function FrameContainer (props) {
           <circle cx='50' cy='50' r='16' fill='white' />
         </svg>
       ) : null}
-      <img src={url + '/img/ISY-Logo_landing_black.png'} style={{ maxHeight: 50, display: 'block', margin: 'auto' }} />
+      <img src={url + '/img/ISY-Logo_landing_black.png'} style={{ maxHeight: 50, display: 'block', margin: 'auto', position: 'relative' }} />
     </div>
   )
 }
