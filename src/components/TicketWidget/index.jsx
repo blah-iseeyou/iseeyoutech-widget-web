@@ -38,7 +38,7 @@ const useStyle = createUseStyles({
   },
   wPopOver: props => ({
 
-    // background: 'black',
+    background: 'white',
     padding: 12,
     position: 'fixed',
     bottom: 10,
