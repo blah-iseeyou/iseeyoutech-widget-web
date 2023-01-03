@@ -5,7 +5,6 @@ const neutrino = require('neutrino');
 
 let webpackconfig = neutrino().webpack()
 
-console.log("s", webpackconfig)
 webpackconfig['externals']
 
 module.exports = neutrino().webpack();

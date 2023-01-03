@@ -7,8 +7,14 @@ module.exports = {
     root: __dirname,
   },
   use: [
-    standard(),
+    
+    standard({
+      env: {
+        URL: 'foo',
+      },
+    }),
     reactComponents(),
     jest(),
+    // web(),
   ],
 };
