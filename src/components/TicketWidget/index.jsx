@@ -4,7 +4,7 @@ import { AiFillBug, AiFillPlusCircle } from 'react-icons/ai'
 import { createUseStyles } from 'react-jss'
 import propTypes from 'prop-types'
 
-const url = 'http://localhost:3000'
+const url = 'https://admin.iseeyoutech.com'
 
 const useStyle = createUseStyles({
   ticketButton: {
@@ -54,7 +54,6 @@ const useStyle = createUseStyles({
     from: { transform: 'translateY(100%)' },
     to: { transform: 'translateY(0)' }
   },
-
   '@keyframes slideToBottom ': {
     from: { transform: 'translateY(0)' },
     to: { transform: 'translateY(100%)' }
