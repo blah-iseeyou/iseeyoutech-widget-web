@@ -7,7 +7,7 @@ import path from 'node:path';
 export default defineConfig({
   build: {
     lib: {
-      entry: path.resolve(__dirname, 'src/main.jsx'),
+      entry: path.resolve(__dirname, 'src/App.jsx'),
       name: 'iseeyoutech-widget-web',
       fileName: (format) => `iseeyoutech-widget-web.${format}.js`
     },
