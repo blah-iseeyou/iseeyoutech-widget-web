@@ -2,18 +2,19 @@
   "name": "iseeyoutech-widget-web",
   "private": true,
   "version": "0.0.0",
+
+  "type": "module",
+
   "main": "./dist/iseeyoutech-widget-web.es.js",
-  "module": "./dist/iseeyoutech-widget-web.es.js",
+  "module": "./dist/iseeyoutech-widget-web.umd.js",
+  "files": ["dist"],
   "exports": {
     ".": {
       "import": "./dist/iseeyoutech-widget-web.es.js",
       "require": "./dist/iseeyoutech-widget-web.umd.js"
     }
   },
-  "type": "module",
-  "files": [
-    "dist"
-  ],
+
   "scripts": {
     "dev": "vite",
     "build": "vite build",

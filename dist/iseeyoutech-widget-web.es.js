@@ -15196,7 +15196,7 @@ const w2 = au({
   }
 });
 function I2(e) {
-  const t = w2({}), [r, n] = ye(Ti("http://localhost:4030", { withCredentials: !0 })), [i, a] = ye(!1), [s, o] = ye(e.email), [l, c] = ye(e.nombre), [u, d] = ye(e.proyectoId);
+  const t = w2({}), [r, n] = ye(Ti("http://localhost:4030", { withCredentials: !0 })), [i, a] = ye(!1), [s, o] = ye(!(e != null && e.email)), [l, c] = ye(!e.nombre), [u, d] = ye(!(e != null && e.proyectoId));
   return /* @__PURE__ */ ie(Of.Provider, { value: s, children: /* @__PURE__ */ ie(Nf.Provider, { value: l, children: /* @__PURE__ */ ie(Pf.Provider, { value: u, children: /* @__PURE__ */ ie(aa.Provider, { value: r, children: /* @__PURE__ */ ie(
     P0,
     {
