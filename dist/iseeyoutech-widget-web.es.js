@@ -12115,7 +12115,6 @@ function kc() {
 const { Text: Ac, Paragraph: P2 } = gn, { Option: Ai } = da;
 function p1({ children: e, getInputProps: t, acceptedFiles: r, inputRef: n, removeFile: i }) {
   return /* @__PURE__ */ rt(Dc, { children: [
-    /* @__PURE__ */ ie("input", { ...t() }),
     /* @__PURE__ */ ie(ai, { type: "button", size: "sm", btnType: "primary", onClick: () => {
       var a;
       return !((a = n == null ? void 0 : n.current) != null && a.click());
@@ -12173,6 +12172,7 @@ function g1({ setView: e }) {
       style: { width: 300, minHeight: 580, position: "relative", display: "flex", flexDirection: "column", padding: "6px 7px" },
       ...s(),
       children: [
+        /* @__PURE__ */ ie("input", { ...o() }),
         /* @__PURE__ */ rt(jr, { style: { flex: 1, display: "flex", flexDirection: "column" }, children: [
           /* @__PURE__ */ ie(
             er.Item,
@@ -12205,7 +12205,7 @@ function g1({ setView: e }) {
             {
               name: "evidencias",
               label: "Agregue evidencia del problema",
-              children: /* @__PURE__ */ ie(p1, { getInputProps: o, acceptedFiles: t, inputRef: !c, removeFile: v })
+              children: /* @__PURE__ */ ie(p1, { acceptedFiles: t, inputRef: !c, removeFile: v })
             }
           ),
           /* @__PURE__ */ ie(

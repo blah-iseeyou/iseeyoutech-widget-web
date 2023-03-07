@@ -13,7 +13,7 @@
       "import": "./dist/iseeyoutech-widget-web.es.js",
       "require": "./dist/iseeyoutech-widget-web.umd.js"
     },
-    "./css": {
+    "./dist/style.css": {
       "import": "./dist/style.css",
       "require": "./dist/style.css"
     }
