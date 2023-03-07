@@ -12,6 +12,10 @@
     ".": {
       "import": "./dist/iseeyoutech-widget-web.es.js",
       "require": "./dist/iseeyoutech-widget-web.umd.js"
+    },
+    "./css": {
+      "import": "./dist/style.css",
+      "require": "./dist/style.css"
     }
   },
   "scripts": {

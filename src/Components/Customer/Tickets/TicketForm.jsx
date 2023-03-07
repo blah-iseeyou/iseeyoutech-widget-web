@@ -14,7 +14,7 @@ const { Option } = NativeSelect
 function Upload({ children, getInputProps, acceptedFiles, inputRef, removeFile }) {
     
     return <>
-        <input {...getInputProps()} />
+
         <Button type='button' size='sm' btnType='primary' onClick={() => !inputRef?.current?.click()}>Subir Evidencias</Button>
         <div style={{
             flexWrap: 'wrap',
@@ -51,7 +51,8 @@ export default function ({ setView }) {
     const { getRootProps, getInputProps, isDragAccept, inputRef, acceptedFiles, } = useDropzone({
         noClick: true,
         multiple: true,
-        onDrop
+        onDrop,
+        
     })
     const [loading, setLoading] = useState(false)
 
@@ -96,7 +97,7 @@ export default function ({ setView }) {
         onFinish={onFinish}
         layout='vertical'
         style={{ width: 300, minHeight: 580, position: "relative", display: "flex", flexDirection: 'column', padding: "6px 7px" }} {...getRootProps()}>
-
+        <input {...getInputProps()} />
         <Layout style={{ flex: 1, display: "flex", flexDirection: 'column' }}>
 
             <Form.Item
@@ -124,7 +125,7 @@ export default function ({ setView }) {
             <Form.Item
                 name="evidencias"
                 label="Agregue evidencia del problema">
-                <Upload getInputProps={getInputProps} acceptedFiles={evidencias} inputRef={!inputRef} removeFile={removeFile} />
+                <Upload acceptedFiles={evidencias} inputRef={!inputRef} removeFile={removeFile} />
             </Form.Item>
             <Form.Item
                 label={<>Indique los pasos que hay que seguir para <br /> reproducir el problema </>}
