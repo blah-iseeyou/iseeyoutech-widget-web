@@ -8,9 +8,9 @@ import { createUseStyles } from 'react-jss'
 
 import { AiOutlineLeft, AiOutlineReload } from 'react-icons/ai'
 
-import ListaTickets from './Components/Customer/Tickets/ListaTickets'
-import TicketForm from './Components/Customer/Tickets/TicketForm'
-import TicketChat from './Components/Customer/Tickets/TicketChat'
+// import ListaTickets from './Components/Customer/Tickets/ListaTickets'
+// import TicketForm from './Components/Customer/Tickets/TicketForm'
+// import TicketChat from './Components/Customer/Tickets/TicketChat'
 
 const useStyle = createUseStyles({
     ISYcard: {
@@ -59,42 +59,56 @@ export default function (params) {
         pages: 0
     })
 
+    // let views = {
+    //     list: {
+    //         title: 'Lista de Tickets',
+    //         content: <ListaTickets
+    //             pagination={pagination}
+    //             setPagination={setPagination}
+    //             setView={(view,_id) => {
+    //                 setView(view)
+    //                 setId(_id)
+    //             }}
+    //         />
+    //     },
+    //     chat: {
+    //         title: 'Contacto con Soporte',
+    //         content: <TicketChat
+    //             ticket_id={_id}
+    //             setView={setView}
+    //         />,
+    //         preffix: <Space style={{ position: "relative", marginRight: 6, marginTop: 2 }}>
+    //             <AiOutlineLeft onClick={() => setView("list")} />
+    //         </Space>,
+    //         suffix: <Space style={{ position: "relative", marginRight: 6, marginTop: 2 }}>
+    //             <AiOutlineReload onClick={() => window.location.reload()} />
+    //         </Space>
+    //     },
+    //     form: {
+    //         title: 'Nueva Incidencia',
+    //         content: <TicketForm
+    //             setView={setView}
+    //         />,
+    //         preffix: <Space style={{ position: "relative", marginRight: 6, marginTop: 2 }}>
+    //             <AiOutlineLeft onClick={() => setView("list")} />
+    //         </Space>,
+    //         suffix: <Space style={{ position: "relative", marginRight: 6, marginTop: 2 }}>
+    //             <AiOutlineReload onClick={() => window.location.reload()} />
+    //         </Space>
+    //     }
+    // }
     let views = {
         list: {
             title: 'Lista de Tickets',
-            content: <ListaTickets
-                pagination={pagination}
-                setPagination={setPagination}
-                setView={(view,_id) => {
-                    setView(view)
-                    setId(_id)
-                }}
-            />
+            content:1
         },
         chat: {
             title: 'Contacto con Soporte',
-            content: <TicketChat
-                ticket_id={_id}
-                setView={setView}
-            />,
-            preffix: <Space style={{ position: "relative", marginRight: 6, marginTop: 2 }}>
-                <AiOutlineLeft onClick={() => setView("list")} />
-            </Space>,
-            suffix: <Space style={{ position: "relative", marginRight: 6, marginTop: 2 }}>
-                <AiOutlineReload onClick={() => window.location.reload()} />
-            </Space>
+            content:2
         },
         form: {
             title: 'Nueva Incidencia',
-            content: <TicketForm
-                setView={setView}
-            />,
-            preffix: <Space style={{ position: "relative", marginRight: 6, marginTop: 2 }}>
-                <AiOutlineLeft onClick={() => setView("list")} />
-            </Space>,
-            suffix: <Space style={{ position: "relative", marginRight: 6, marginTop: 2 }}>
-                <AiOutlineReload onClick={() => window.location.reload()} />
-            </Space>
+            content: 3
         }
     }
 
