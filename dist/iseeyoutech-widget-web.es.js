@@ -12116,7 +12116,10 @@ const { Text: Ac, Paragraph: P2 } = gn, { Option: Ai } = da;
 function p1({ children: e, getInputProps: t, acceptedFiles: r, inputRef: n, removeFile: i }) {
   return /* @__PURE__ */ rt(Dc, { children: [
     /* @__PURE__ */ ie("input", { ...t() }),
-    /* @__PURE__ */ ie(ai, { type: "button", size: "sm", btnType: "primary", onClick: () => n.current.click(), children: "Subir Evidencias" }),
+    /* @__PURE__ */ ie(ai, { type: "button", size: "sm", btnType: "primary", onClick: () => {
+      var a;
+      return !((a = n == null ? void 0 : n.current) != null && a.click());
+    }, children: "Subir Evidencias" }),
     /* @__PURE__ */ ie("div", { style: {
       flexWrap: "wrap",
       display: "flex",
@@ -12202,7 +12205,7 @@ function g1({ setView: e }) {
             {
               name: "evidencias",
               label: "Agregue evidencia del problema",
-              children: /* @__PURE__ */ ie(p1, { getInputProps: o, acceptedFiles: t, inputRef: c, removeFile: v })
+              children: /* @__PURE__ */ ie(p1, { getInputProps: o, acceptedFiles: t, inputRef: !c, removeFile: v })
             }
           ),
           /* @__PURE__ */ ie(

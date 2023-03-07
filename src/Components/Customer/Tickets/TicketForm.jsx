@@ -15,7 +15,7 @@ function Upload({ children, getInputProps, acceptedFiles, inputRef, removeFile }
     
     return <>
         <input {...getInputProps()} />
-        <Button type='button' size='sm' btnType='primary' onClick={() => inputRef.current.click()}>Subir Evidencias</Button>
+        <Button type='button' size='sm' btnType='primary' onClick={() => !inputRef?.current?.click()}>Subir Evidencias</Button>
         <div style={{
             flexWrap: 'wrap',
             display: 'flex',
@@ -124,7 +124,7 @@ export default function ({ setView }) {
             <Form.Item
                 name="evidencias"
                 label="Agregue evidencia del problema">
-                <Upload getInputProps={getInputProps} acceptedFiles={evidencias} inputRef={inputRef} removeFile={removeFile} />
+                <Upload getInputProps={getInputProps} acceptedFiles={evidencias} inputRef={!inputRef} removeFile={removeFile} />
             </Form.Item>
             <Form.Item
                 label={<>Indique los pasos que hay que seguir para <br /> reproducir el problema </>}
