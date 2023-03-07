@@ -15203,7 +15203,6 @@ function I2(e) {
     }
   ) }) }) }) });
 }
-console.log("e", { VITE_APP_PUBLIC_URL: "http://localhost:3000", VITE_APP_WEB_SERVICE: "http://localhost:4030", BASE_URL: "/", MODE: "production", DEV: !1, PROD: !0, SSR: !1 });
 export {
   I2 as default
 };

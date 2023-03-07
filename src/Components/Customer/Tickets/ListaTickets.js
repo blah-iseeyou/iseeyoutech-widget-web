@@ -4,7 +4,7 @@ import React, { useEffect, useState, useContext } from 'react'
 import { Alert, Button, Card, Input, Layout, Pagination, Space, Typography, Tooltip } from 'tiny-ui'
 import Color from 'color'
 import { AiOutlineDelete, AiOutlineEdit, AiOutlineRight } from 'react-icons/ai'
-import PageHeader from '../../../Widgets/PageHeader.jsx'
+// import PageHeader from '../../../Widgets/PageHeader.js'
 
 import Socket from '../../../Contexts/Socket'
 import { getSign } from '../../../Contexts/Params'

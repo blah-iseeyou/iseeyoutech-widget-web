@@ -15,7 +15,7 @@ import App from './App'
 //         nombre="Juan Alberto Virrey"
 //         proyectoId="632b31b87957e70d98f85999"
 //       />
-//     </React.StrictMode>,
+//     </React.StrictMode>
 //   )
 
 

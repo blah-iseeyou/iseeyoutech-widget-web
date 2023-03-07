@@ -2,12 +2,12 @@ import React, { useState, useCallback, useEffect, useRef, useMemo, useContext } 
 import { Alert, Button, Card, Input, Layout, Pagination, Space, NativeSelect, Typography, Tooltip, Form, Textarea, Upload, Avatar } from 'tiny-ui'
 import Color from 'color'
 import { AiOutlineFile, AiOutlineSend } from 'react-icons/ai'
-import PageHeader from '../../../Widgets/PageHeader.jsx'
+// import PageHeader from '../../../Widgets/PageHeader.js'
 import { useDropzone } from 'react-dropzone';
 import moment from 'moment'
 
 import '../../../Styles/Modules/TicketChat.scss'
-import SocketContext from '../../../Contexts/Socket.jsx'
+import SocketContext from '../../../Contexts/Socket.js'
 import { getSign } from '../../../Contexts/Params'
 import SocketIOFileClient from 'socket.io-file-client'
 

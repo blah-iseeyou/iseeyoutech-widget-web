@@ -4,10 +4,22 @@ import { resolve } from 'path'
 import path from 'node:path';
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react({
+    include: ".js"
+  })],
+  
+  esbuild: { loader: "jsx", include: /src\/.*\.jsx?$/, exclude: [] }, optimizeDeps: { esbuildOptions: { plugins: [ { name: "load-js-files-as-jsx", setup(build) { build.onLoad({ filter: /src\/.*\.js$/ }, async (args) => { return ({ loader: "jsx", contents: await fs.readFile(args.path, "utf8"), }) }); }, }, ], }, },
+  optimizeDeps: {
+    esbuildOptions: {
+      loader: {
+        '.js': 'jsx',
+      },
+    },
+  },
+  
   build: {
     lib: {
-      entry: path.resolve(__dirname, 'src/main.jsx'),
+      entry: path.resolve(__dirname, 'src/main.js'),
       name: 'isy-widget-support',
       formats: ['es', 'umd'],
       fileName: (format) => `wid.${format}.js`,
@@ -21,24 +33,5 @@ export default defineConfig({
         },
       },
     },
-    // lib: {
-    //   // Could also be a dictionary or array of multiple entry points
-    //   entry: resolve(__dirname, 'src/main.jsx'),
-    //   name: 'ISY Widget Support',
-    //   // the proper extensions will be added
-    //   fileName: 'index',
-    // },
-    // rollupOptions: {
-    //   // make sure to externalize deps that shouldn't be bundled
-    //   // into your library
-    //   external: ['react'],
-    //   output: {
-    //     // Provide global variables to use in the UMD build
-    //     // for externalized deps
-    //     globals: {
-    //       // vue: 'react',
-    //     },
-    //   },
-    // },
   },
 })
