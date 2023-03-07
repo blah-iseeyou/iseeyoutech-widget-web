@@ -7,12 +7,11 @@
   "exports": {
     ".": {
       "import": "./dist/iseeyoutech-widget-web.es.js",
-      "require": "./dist/iseeyoutech-widget-web.umd.js"
+      "require": "./dist/iseeyoutech-widget-web.es.js"
     }
   },
-  
   "type": "module",
-  "files": [ "dist" ],
+  "files": [ "dist"],
   "scripts": {
     "dev": "vite",
     "build": "vite build",
