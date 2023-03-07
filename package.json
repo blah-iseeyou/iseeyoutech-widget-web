@@ -9,7 +9,10 @@
       "import": "./dist/iseeyoutech-widget-web.es.js",
       "require": "./dist/iseeyoutech-widget-web.umd.js"
     },
-    "./Widgets/": "./dist/"
+    "./dist/index.css": {
+      "import": "./dist/index.css",
+      "require": "./dist/index.css"
+    }
   },
   
   "type": "module",
