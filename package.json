@@ -8,12 +8,12 @@
     ".": {
       "import": "./dist/iseeyoutech-widget-web.es.js",
       "require": "./dist/iseeyoutech-widget-web.umd.js"
-    }
+    },
+    "./Widgets/": "./dist/"
   },
+  
   "type": "module",
-  "files": [
-    "dist"
-  ],
+  "files": [ "dist" ],
   "scripts": {
     "dev": "vite",
     "build": "vite build",
