@@ -7,7 +7,7 @@ import { useDropzone } from 'react-dropzone';
 import moment from 'moment'
 
 import '../../../Styles/Modules/TicketChat.scss'
-import SocketContext from '../../../Contexts/Socket.js'
+import SocketContext from '../../../Contexts/Socket'
 import { getSign } from '../../../Contexts/Params'
 import SocketIOFileClient from 'socket.io-file-client'
 

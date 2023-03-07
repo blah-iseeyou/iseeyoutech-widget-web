@@ -8,9 +8,9 @@ import { createUseStyles } from 'react-jss'
 
 import { AiOutlineLeft, AiOutlineReload } from 'react-icons/ai'
 
-import ListaTickets from './Components/Customer/Tickets/ListaTickets.js'
-import TicketForm from './Components/Customer/Tickets/TicketForm.js'
-import TicketChat from './Components/Customer/Tickets/TicketChat.js'
+import ListaTickets from './Components/Customer/Tickets/ListaTickets'
+import TicketForm from './Components/Customer/Tickets/TicketForm'
+import TicketChat from './Components/Customer/Tickets/TicketChat'
 
 const useStyle = createUseStyles({
     ISYcard: {
