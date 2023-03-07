@@ -15038,7 +15038,8 @@ function C2({ ticket_id: e }) {
         }
       ),
       /* @__PURE__ */ ie(rs, { className: "file-message", onClick: () => {
-        P.current.click();
+        var O;
+        (O = P == null ? void 0 : P.current) != null && O.click();
       } }),
       /* @__PURE__ */ ie(th, { className: "send-message" }),
       /* @__PURE__ */ rt("div", { className: "drop-area", style: { display: x ? "flex" : "none" }, children: [

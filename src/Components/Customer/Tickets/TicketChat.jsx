@@ -179,7 +179,7 @@ export default function ({ ticket_id }) {
         }}
       />
       <AiOutlineFile className="file-message" onClick={() => {
-        inputRef.current.click()
+        !inputRef?.current?.click()
       }} />
       <AiOutlineSend className="send-message" />
       {<div className='drop-area' style={{ display: isDragAccept ? "flex" : "none" }}>
