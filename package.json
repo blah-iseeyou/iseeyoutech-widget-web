@@ -2,7 +2,7 @@
   "name": "iseeyoutech-widget-web",
   "private": true,
   "version": "0.0.0",
-  "main": "./dist/iseeyoutech-widget-web.umd.js",
+  "main": "./dist/iseeyoutech-widget-web.es.js",
   "module": "./dist/iseeyoutech-widget-web.es.js",
   "exports": {
     ".": {
