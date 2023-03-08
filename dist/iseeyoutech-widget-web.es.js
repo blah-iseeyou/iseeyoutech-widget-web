@@ -15075,7 +15075,7 @@ const xx = ou({
   ISYtitle: {
     position: "absolute",
     top: -60,
-    width: "calc(100% - 14px)",
+    width: "calc(100% + 14px)",
     left: "50%",
     padding: "12px 15px",
     background: "white",

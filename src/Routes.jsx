@@ -21,7 +21,6 @@ const useStyle = createUseStyles({
         borderRadius: 100,
         transform: 'translateX(-50%)',
         boxShadow: '0 3px 6px -4px rgb(0 0 0 / 12%), 0 6px 16px 0 rgb(0 0 0 / 8%), 0 6px 15px 4px rgb(0 0 0 / 5%)',
-
     },
     ISYlayout: {
         position: "relative",
@@ -30,7 +29,7 @@ const useStyle = createUseStyles({
     ISYtitle: {
         position: "absolute",
         top: -60,
-        width: "calc(100% - 14px)",
+        width: "calc(100% + 14px)",
         left: '50%',
         padding: "12px 15px",
         background: 'white',
