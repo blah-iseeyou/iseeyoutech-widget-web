@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useContext, useCallback } from 'react'
 import { Button, Input, Layout, NativeSelect, Typography, Form, Textarea, Tag, Notification, Loader } from 'tiny-ui'
-import { useDropzone } from 'react-dropzone'
 import { AiOutlineClose, AiOutlineFile } from 'react-icons/ai'
 
+import { useDropzone } from 'react-dropzone'
 
 import Socket from '../../../Contexts/Socket'
 import { getSign } from '../../../Contexts/Params'
