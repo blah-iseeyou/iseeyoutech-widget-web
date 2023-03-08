@@ -126,7 +126,7 @@ export default function ({ setView }) {
             <Form.Item
                 name="evidencias"
                 label="Agregue evidencia del problema">
-                <Upload acceptedFiles={evidencias} inputRef={!inputRef} removeFile={removeFile} />
+                <Upload acceptedFiles={evidencias} inputRef={inputRef} removeFile={removeFile} />
             </Form.Item>
             <Form.Item
                 label={<>Indique los pasos que hay que seguir para <br /> reproducir el problema </>}

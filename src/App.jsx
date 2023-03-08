@@ -74,9 +74,9 @@ function App(props) {
   const [socket, setSocket] = useState(io(import.meta.env.VITE_APP_WEB_SERVICE, { withCredentials: true, }))
   const [visible, setVisible] = useState(false)
 
-  const [email, setEmail] = useState(!props?.email)
-  const [nombre, setNombre] = useState(!props.nombre)
-  const [proyectoId, setProyectoId] = useState(!props?.proyectoId)
+  const [email, setEmail] = useState(props?.email)
+  const [nombre, setNombre] = useState(props.nombre)
+  const [proyectoId, setProyectoId] = useState(props?.proyectoId)
 
   return (
     <Email.Provider value={email}>

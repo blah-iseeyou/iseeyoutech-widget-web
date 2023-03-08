@@ -12222,7 +12222,7 @@ function b1({ setView: e }) {
             {
               name: "evidencias",
               label: "Agregue evidencia del problema",
-              children: /* @__PURE__ */ ie(y1, { acceptedFiles: t, inputRef: !c, removeFile: m })
+              children: /* @__PURE__ */ ie(y1, { acceptedFiles: t, inputRef: c, removeFile: m })
             }
           ),
           /* @__PURE__ */ ie(
@@ -15047,7 +15047,7 @@ function Ex({ ticket_id: e }) {
       ),
       /* @__PURE__ */ ie(es, { className: "file-message", onClick: () => {
         var N;
-        P && P.current && (N = P == null ? void 0 : P.current) != null && N.click();
+        P && P.current && ((N = P == null ? void 0 : P.current) == null || N.click());
       } }),
       /* @__PURE__ */ ie(nh, { className: "send-message" }),
       /* @__PURE__ */ it("div", { className: "drop-area", style: { display: E ? "flex" : "none" }, children: [
@@ -15193,7 +15193,7 @@ const Ax = ou({
   }
 });
 function Rx(e) {
-  const t = Ax({}), [r, n] = pe(Ii("http://localhost:4030", { withCredentials: !0 })), [i, a] = pe(!1), [s, o] = pe(!(e != null && e.email)), [l, c] = pe(!e.nombre), [u, d] = pe(!(e != null && e.proyectoId));
+  const t = Ax({}), [r, n] = pe(Ii("http://localhost:4030", { withCredentials: !0 })), [i, a] = pe(!1), [s, o] = pe(e == null ? void 0 : e.email), [l, c] = pe(e.nombre), [u, d] = pe(e == null ? void 0 : e.proyectoId);
   return /* @__PURE__ */ ie(Rf.Provider, { value: s, children: /* @__PURE__ */ ie(Tf.Provider, { value: l, children: /* @__PURE__ */ ie(If.Provider, { value: u, children: /* @__PURE__ */ ie(ia.Provider, { value: r, children: /* @__PURE__ */ ie(
     Ry,
     {
