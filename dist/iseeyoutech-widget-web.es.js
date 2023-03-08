@@ -15025,6 +15025,7 @@ function Ex({ ticket_id: e }) {
         "image",
         {
           style: { maxWidth: 200 },
+          src: axios.defaults.baseURL + "/upload/customer-chat/" + W.file,
           className: "mb-1"
         }
       ) : /* @__PURE__ */ ie(ni, { size: "small", target: "_blank", download: !0, href: axios.defaults.baseURL + "/upload/customer-chat/" + W.file, block: !0, children: W.name }) }))
