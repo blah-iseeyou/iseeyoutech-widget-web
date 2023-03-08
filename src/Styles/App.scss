@@ -1,9 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap');
 
-body {
-	font-family: 'Inter', sans-serif;
-}
-
 // @import '/node_modules/tiny-ui/lib/style/normalise';
 @import './Theme/_variable.scss';
 @import '/node_modules/tiny-ui/lib/style/animation';
@@ -123,10 +119,6 @@ body {
 	border: none;
 	box-shadow: -0.5px -0.5px 1px 1px rgb(50 50 71 / 7%), 1px 1px 3px 0 rgb(50 50 71 / 16%) !important;
 }
-
-
-
-
 
 .drop-area {
 	transition: 1s all ease-in-out;

@@ -15067,10 +15067,12 @@ const xx = ou({
     borderRadius: 100,
     transform: "translateX(-50%)",
     boxShadow: "0 3px 6px -4px rgb(0 0 0 / 12%), 0 6px 16px 0 rgb(0 0 0 / 8%), 0 6px 15px 4px rgb(0 0 0 / 5%)"
+    // zIndex: 100
   },
   ISYlayout: {
     position: "relative",
-    fontFamily: "'Inter', sans-serif"
+    fontFamily: "'Inter', sans-serif",
+    zIndex: 100
   },
   ISYtitle: {
     position: "absolute",
@@ -15200,7 +15202,7 @@ function Rx(e) {
       onVisibleChange: a,
       content: /* @__PURE__ */ ie(wx, {}),
       placement: "top-start",
-      children: /* @__PURE__ */ ie("div", { style: { position: "fixed", bottom: 0, left: 10 }, children: /* @__PURE__ */ ie("button", { className: t.ticketButton, children: i ? /* @__PURE__ */ ie(eh, { className: t.ticketButtonIcon }) : /* @__PURE__ */ ie($d, { className: t.ticketButtonIcon }) }) })
+      children: /* @__PURE__ */ ie("div", { style: { position: "fixed", bottom: 0, left: 10, zIndex: 100 }, children: /* @__PURE__ */ ie("button", { className: t.ticketButton, children: i ? /* @__PURE__ */ ie(eh, { className: t.ticketButtonIcon }) : /* @__PURE__ */ ie($d, { className: t.ticketButtonIcon }) }) })
     }
   ) }) }) }) });
 }

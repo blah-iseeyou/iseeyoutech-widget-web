@@ -87,7 +87,7 @@ function App(props) {
               onVisibleChange={setVisible}
               content={<Routes />}
               placement="top-start">
-              <div style={{ position: 'fixed', bottom: 0, left: 10, }}>
+              <div style={{ position: 'fixed', bottom: 0, left: 10, zIndex: 100 }}>
                 <button className={classes.ticketButton} >
                   {(visible) ? <AiFillPlusCircle className={classes.ticketButtonIcon} /> : <AiFillBug className={classes.ticketButtonIcon} />}
                 </button>
