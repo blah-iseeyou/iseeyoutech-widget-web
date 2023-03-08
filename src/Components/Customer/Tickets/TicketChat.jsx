@@ -58,28 +58,28 @@ export default function ({ ticket_id }) {
 
     socket.emit("cliente/chat", { ticket_id, ...params })
 
-    let uploader = new SocketIOFileClient(socket);
+    // // let uploader = new SocketIOFileClient(socket);
 
-    uploader.on('stream', (file) => {
-      // let { filesUploaded } = this.state
-      // filesUploaded[file.uploadId].progress = (file.size / file.sent) * 100
-      // this.setState({ filesUploaded })
-    })
-    uploader.on('complete', (file) => {
-      // let { filesUploaded } = this.state
-      // filesUploaded[file.uploadId].progress = 100
-      // filesUploaded[file.uploadId].filename = file.name
-      // this.setState({ filesUploaded })
-    })
-    uploader.on('error', function (err) {
-      // console.log('Error!', err);
-      // message.error("No fue posible subir el archivo")
-    })
-    uploader.on('abort', function (fileInfo) {
-      // console.log('Aborted: ', fileInfo);
-      // message.error("El proceso fue abortado")
-    })
-    cUploader = uploader
+    // // uploader.on('stream', (file) => {
+    // //   // let { filesUploaded } = this.state
+    // //   // filesUploaded[file.uploadId].progress = (file.size / file.sent) * 100
+    // //   // this.setState({ filesUploaded })
+    // // })
+    // // uploader.on('complete', (file) => {
+    // //   // let { filesUploaded } = this.state
+    // //   // filesUploaded[file.uploadId].progress = 100
+    // //   // filesUploaded[file.uploadId].filename = file.name
+    // //   // this.setState({ filesUploaded })
+    // // })
+    // // uploader.on('error', function (err) {
+    // //   // console.log('Error!', err);
+    // //   // message.error("No fue posible subir el archivo")
+    // // })
+    // // uploader.on('abort', function (fileInfo) {
+    // //   // console.log('Aborted: ', fileInfo);
+    // //   // message.error("El proceso fue abortado")
+    // // })
+    // // cUploader = uploader
 
 
     return () => {
@@ -100,10 +100,7 @@ export default function ({ ticket_id }) {
       response.data = [...messages.data, ...response.data]
 
     setTicket(response.ticket)
-
     setMessages(response)
-
-
   }
 
   const formatMessage = ({ texto, _id }) => ({ text: texto, id: _id, me: true })
