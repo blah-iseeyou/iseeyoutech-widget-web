@@ -21,7 +21,7 @@ const useStyle = createUseStyles({
         borderRadius: 100,
         transform: 'translateX(-50%)',
         boxShadow: '0 3px 6px -4px rgb(0 0 0 / 12%), 0 6px 16px 0 rgb(0 0 0 / 8%), 0 6px 15px 4px rgb(0 0 0 / 5%)',
-        // zIndex: 100
+        zIndex: 100
     },
     ISYlayout: {
         position: "relative",
