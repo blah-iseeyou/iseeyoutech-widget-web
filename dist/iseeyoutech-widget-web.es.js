@@ -15022,7 +15022,7 @@ function Ex({ ticket_id: e }) {
         /* @__PURE__ */ ie(Si, { className: "isy-chat-time", children: re(X).format("LLL") })
       ] }),
       R == null ? void 0 : R.map((W) => /* @__PURE__ */ ie("div", { class: "isy-chat-message-body", children: Boolean(/\.(png|jpe?g|gif|webp|svg)(\?.*)?$/.test(W.file)) ? /* @__PURE__ */ ie(
-        Image,
+        "image",
         {
           style: { maxWidth: 200 },
           className: "mb-1"

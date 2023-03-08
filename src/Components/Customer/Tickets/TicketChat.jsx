@@ -149,7 +149,7 @@ export default function ({ ticket_id }) {
       </div>
       {archivos?.map(e => {
         return <div class="isy-chat-message-body">
-          {Boolean(/\.(png|jpe?g|gif|webp|svg)(\?.*)?$/.test(e.file)) ? <Image style={{ maxWidth: 200 }}
+          {Boolean(/\.(png|jpe?g|gif|webp|svg)(\?.*)?$/.test(e.file)) ? <image style={{ maxWidth: 200 }}
             // src={axios.defaults.baseURL + "/upload/customer-chat/" + e.file}
             className="mb-1" /> : <Button size="small" target="_blank" download href={axios.defaults.baseURL + "/upload/customer-chat/" + e.file} block >{e.name}</Button>}
         </div>
