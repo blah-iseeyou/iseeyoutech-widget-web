@@ -46,8 +46,9 @@ let estatuses = [
 
 estatuses = estatuses.map(e => ({ ...e, ligth: Color(e.color).fade(0.8).hexa() }))
 
-function ItemList({ estatus, asunto, setView, _id, ...args }) {
+function ItemList({ estatus, asunto, setView, mensajes_count, _id, ...args }) {
 
+    console.log("ar", args)
 
 
     let { color, title, key, ligth } = estatuses[(estatus ?? 1)]
@@ -59,9 +60,13 @@ function ItemList({ estatus, asunto, setView, _id, ...args }) {
         onMouseLeave={() => setVisibleActions(false)}
         onClick={() => setView("chat", _id)}
     >
-        <Tooltip title="asdf"><Text style={{ fontSize: 14, flex: 1 }}>{asunto?.substring(0, 26)}</Text></Tooltip>
+        <Tooltip title={asunto?.substring(0, 26)}><Text style={{ fontSize: 14, flex: 1 }}>{asunto?.substring(0, 26)}</Text></Tooltip>
         {!visibleActions ?
-            <Text style={{ backgroundColor: color, color: "white", padding: "2px 5px", borderRadius: 4, fontSize: 12, }}>{title}</Text> :
+            <Space >
+                <Text style={{ backgroundColor: color, color: "white", padding: "2px 5px", borderRadius: 4, fontSize: 12, }}>{mensajes_count}</Text> 
+                <Text style={{ backgroundColor: color, color: "white", padding: "2px 5px", borderRadius: 4, fontSize: 12, }}>{title}</Text> 
+            </Space>
+        :
             <Space style={{ position: "relative", top: 1 }}>
                 {/* <AiOutlineEdit style={{ fontSize: 16, cursor: "pointer" }} /> */}
                 <AiOutlineDelete style={{ fontSize: 16, cursor: "pointer" }} />

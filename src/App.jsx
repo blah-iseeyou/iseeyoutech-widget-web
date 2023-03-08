@@ -7,7 +7,7 @@ import { createUseStyles } from 'react-jss'
 import Socket, { SetSocketContext } from './Contexts/Socket'
 import io from "socket.io-client";
 
-import { Popover } from 'tiny-ui'
+import { Badge, Popover, Notification, Typography } from 'tiny-ui'
 import Routes from './Routes'
 
 import { Email, Nombre, ProyectoId, URL_WS } from './Contexts/Params'
@@ -16,6 +16,7 @@ import './Styles/App.scss'
 
 const useStyle = createUseStyles({
   ticketButton: {
+    fontFamily: "'Inter', sans-serif",
     position: "relative",
     left: -10,
     color: 'white',
@@ -66,19 +67,41 @@ const useStyle = createUseStyles({
   }
 })
 
+const { Text } = Typography
 
 function App(props) {
 
   const classes = useStyle({})
 
   const [URL, setURL] = useState(props?.URL || import.meta.env.VITE_APP_WEB_SERVICE)
-
   const [socket, setSocket] = useState(io(URL, { withCredentials: true, }))
   const [visible, setVisible] = useState(false)
+  const [email, setEmail] = useState(props?.email)
+  const [nombre, setNombre] = useState(props.nombre)
+  const [proyectoId, setProyectoId] = useState(props?.proyectoId)
+
+  const [started, setStarted] = useState(false)
+  const [count, setCount] = useState(0)
 
 
   useEffect(() => {
+    socket.on("cliente/tickets/chat/count", setCount)
+    socket.on("cliente/tickets/chat/notification", (mensaje) => {
+      console.log("e", mensaje);
+      Notification.open({
+        title: <Text>Has recibido un mensaje de {mensaje.autor?.nombre} {mensaje.autor?.apellidos}</Text>,
+        description: <Text >{mensaje.texto}</Text>,
+        placement: "bottomRight",
+      })
+    })
 
+    return () => {
+
+      // cliente/tickets/chat/notification
+    }
+  }, [])
+
+  useEffect(() => {
     if (props?.email !== email)
       setEmail(props?.email)
 
@@ -91,12 +114,15 @@ function App(props) {
     if (props?.URL !== URL)
       setURL(props?.URL)
 
+    if (props?.isReady && !started) {
+      setStarted(true)
+      socket.emit("cliente/tickets/chat/count", { email, nombre, proyecto_id: proyectoId })
+    }
+
   })
 
 
-  const [email, setEmail] = useState(props?.email)
-  const [nombre, setNombre] = useState(props.nombre)
-  const [proyectoId, setProyectoId] = useState(props?.proyectoId)
+
 
   return (
     <URL_WS.Provider value={URL}>
@@ -110,7 +136,9 @@ function App(props) {
                 placement="top-start">
                 <div style={{ position: 'fixed', bottom: 0, left: 10, zIndex: 100 }}>
                   <button className={classes.ticketButton} >
-                    {(visible) ? <AiFillPlusCircle className={classes.ticketButtonIcon} /> : <AiFillBug className={classes.ticketButtonIcon} />}
+                    <Badge count={count}>
+                      {(visible) ? <AiFillPlusCircle className={classes.ticketButtonIcon} /> : <AiFillBug className={classes.ticketButtonIcon} />}
+                    </Badge>
                   </button>
                 </div>
               </Popover>

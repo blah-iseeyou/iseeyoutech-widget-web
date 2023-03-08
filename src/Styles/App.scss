@@ -13,7 +13,7 @@
 // @import "/node_modules/tiny-ui/lib/aspect-ratio/style/index";
 @import "/node_modules/tiny-ui/lib/avatar/style/index";
 // @import "/node_modules/tiny-ui/lib/back-top/style/index";
-// @import "/node_modules/tiny-ui/lib/badge/style/index";
+@import "/node_modules/tiny-ui/lib/badge/style/index";
 // @import "/node_modules/tiny-ui/lib/breadcrumb/style/index";
 // @import "/node_modules/tiny-ui/lib/button/style/index";
 
@@ -110,6 +110,10 @@
 	100% {
 		background-position: 0% 50%;
 	}
+}
+
+.ty-notification-container{
+	font-family: 'Inter', sans-serif;
 }
 
 .native-select {

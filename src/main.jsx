@@ -1,5 +1,7 @@
 import React from 'react'
 // import ReactDOM from 'react-dom/client'
+
+import ReactDOM from 'react-dom';
 import App from './App'
 
 
@@ -7,7 +9,18 @@ import App from './App'
 // console.log("e", import.meta.env)
 
 
-// if (import.meta.env.DEV)
+if (import.meta.env.DEV)
+    ReactDOM.render(
+        <React.StrictMode>
+            <App
+                isReady={true}
+                email="av@iseeyoutech.com"
+                nombre="Juan Alberto Virrey"
+                proyectoId="632e04bfb3928934bc432c87"
+            />
+        </React.StrictMode>,
+        document.getElementById('root')
+    )
 //   ReactDOM.createRoot(document.getElementById('root')).render(
 //     <React.StrictMode>
 //       <App
