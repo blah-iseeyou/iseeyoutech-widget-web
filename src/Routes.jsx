@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import ReactDOM from 'react-dom/client'
 import { Card, Space } from 'tiny-ui'
 import img from './assets/isy.png'
 

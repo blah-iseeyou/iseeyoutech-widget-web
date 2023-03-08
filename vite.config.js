@@ -12,7 +12,7 @@ export default defineConfig({
       fileName: (format) => `iseeyoutech-widget-web.${format}.js`
     },
     rollupOptions: {
-      // external: ['react', 'react-dom', 'react-dropzone', 'react-dropzone'],
+      external: ['react', 'react-dom'],
       output: {
         globals: {
           react: 'React'

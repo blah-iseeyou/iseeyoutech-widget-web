@@ -48,7 +48,8 @@ export default function ({ setView }) {
 
     const socket = useContext(Socket)
 
-    const { getRootProps, getInputProps, isDragAccept, inputRef, acceptedFiles, } = useDropzone({
+    const { getRootProps, getInputProps, isDragAccept, 
+        inputRef, acceptedFiles, } = useDropzone({
         noClick: true,
         multiple: true,
         onDrop,

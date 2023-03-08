@@ -165,7 +165,7 @@ export default function ({ ticket_id }) {
       {messages.data.map(e => renderMessage(e))}
     </Layout>
     <div className='form-chat' >
-      <input {...getInputProps()} />
+      {/* <input {...getInputProps()} /> */}
       <Textarea
         value={message}
         onChange={setMessage}
