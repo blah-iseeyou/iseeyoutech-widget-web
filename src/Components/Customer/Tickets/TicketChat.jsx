@@ -8,7 +8,7 @@ import moment from 'moment'
 
 import '../../../Styles/Modules/TicketChat.scss'
 import SocketContext from '../../../Contexts/Socket'
-import { getSign } from '../../../Contexts/Params'
+import { getSign, URL_WS } from '../../../Contexts/Params'
 import SocketIOFileClient from 'socket.io-file-client'
 
 const { Text, Title, Paragraph } = Typography
@@ -19,6 +19,8 @@ export default function ({ ticket_id }) {
 
   const params = getSign()
   const socket = useContext(SocketContext)
+
+  const URL = useContext(URL_WS)
 
   const [messages, setMessages] = useState({
     data: [],
@@ -152,8 +154,8 @@ export default function ({ ticket_id }) {
           {Boolean(/\.(png|jpe?g|gif|webp|svg)(\?.*)?$/.test(e.file)) ? <image
             
             style={{ maxWidth: 200 }}
-            src={axios.defaults.baseURL + "/upload/customer-chat/" + e.file}
-            className="mb-1" /> : <Button size="small" target="_blank" download href={axios.defaults.baseURL + "/upload/customer-chat/" + e.file} block >{e.name}</Button>}
+            src={URL + "/upload/customer-chat/" + e.file}
+            className="mb-1" /> : <Button size="small" target="_blank" download href={URL + "/upload/customer-chat/" + e.file} block >{e.name}</Button>}
         </div>
       })}
     </div>

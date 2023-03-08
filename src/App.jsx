@@ -10,7 +10,7 @@ import io from "socket.io-client";
 import { Popover } from 'tiny-ui'
 import Routes from './Routes'
 
-import { Email, Nombre, ProyectoId, getSign } from './Contexts/Params'
+import { Email, Nombre, ProyectoId, URL_WS } from './Contexts/Params'
 
 import './Styles/App.scss'
 
@@ -71,7 +71,9 @@ function App(props) {
 
   const classes = useStyle({})
 
-  const [socket, setSocket] = useState(io(props?.VITE_APP_WEB_SERVICE || import.meta.env.VITE_APP_WEB_SERVICE, { withCredentials: true, }))
+  const [URL, setURL] = useState(props?.URL || import.meta.env.VITE_APP_WEB_SERVICE)
+
+  const [socket, setSocket] = useState(io(URL, { withCredentials: true, }))
   const [visible, setVisible] = useState(false)
 
 
@@ -86,6 +88,9 @@ function App(props) {
     if (props?.proyectoId !== proyectoId)
       setProyectoId(props?.proyectoId)
 
+    if (props?.URL !== URL)
+      setURL(props?.URL)
+
   })
 
 
@@ -94,24 +99,26 @@ function App(props) {
   const [proyectoId, setProyectoId] = useState(props?.proyectoId)
 
   return (
-    <Email.Provider value={email}>
-      <Nombre.Provider value={nombre}>
-        <ProyectoId.Provider value={proyectoId}>
-          <Socket.Provider value={socket}>
-            <Popover
-              onVisibleChange={setVisible}
-              content={<Routes />}
-              placement="top-start">
-              <div style={{ position: 'fixed', bottom: 0, left: 10, zIndex: 100 }}>
-                <button className={classes.ticketButton} >
-                  {(visible) ? <AiFillPlusCircle className={classes.ticketButtonIcon} /> : <AiFillBug className={classes.ticketButtonIcon} />}
-                </button>
-              </div>
-            </Popover>
-          </Socket.Provider>
-        </ProyectoId.Provider>
-      </Nombre.Provider>
-    </Email.Provider>
+    <URL_WS.Provider value={URL}>
+      <Email.Provider value={email}>
+        <Nombre.Provider value={nombre}>
+          <ProyectoId.Provider value={proyectoId}>
+            <Socket.Provider value={socket}>
+              <Popover
+                onVisibleChange={setVisible}
+                content={<Routes />}
+                placement="top-start">
+                <div style={{ position: 'fixed', bottom: 0, left: 10, zIndex: 100 }}>
+                  <button className={classes.ticketButton} >
+                    {(visible) ? <AiFillPlusCircle className={classes.ticketButtonIcon} /> : <AiFillBug className={classes.ticketButtonIcon} />}
+                  </button>
+                </div>
+              </Popover>
+            </Socket.Provider>
+          </ProyectoId.Provider>
+        </Nombre.Provider>
+      </Email.Provider>
+    </URL_WS.Provider>
   )
 }
 

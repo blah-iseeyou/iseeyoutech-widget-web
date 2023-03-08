@@ -10,6 +10,9 @@ const Email = React.createContext(null)
 const Nombre = React.createContext(null)
 
 
+const URL_WS = React.createContext(null)
+
+
 function getSign() {
     
     const proyecto_id = useContext(ProyectoId)
@@ -19,5 +22,5 @@ function getSign() {
     return { proyecto_id, email, nombre }
 }
 
-export { ProyectoId, Email, Nombre, getSign }
+export { ProyectoId, Email, Nombre, URL_WS, getSign }
 
