@@ -25,6 +25,7 @@ const useStyle = createUseStyles({
     },
     ISYlayout: {
         position: "relative",
+        fontFamily: "'Inter', sans-serif"
     },
     ISYtitle: {
         position: "absolute",
@@ -98,15 +99,11 @@ export default function (params) {
     }
 
     return <div className={classes.ISYlayout}>
-        <Card
-            className={classes.ISYcard}
-        >
+        <Card className={classes.ISYcard}>
             <a href='http://iseeyoutech.com' target="_blank"><img src={img} style={{ height: 60 }} /></a>
         </Card>
         {views[view].content}
-        <Card
-            className={classes.ISYtitle}
-        >
+        <Card className={classes.ISYtitle}>
             <div style={{ width: "100%", display: "flex", }}>
                 <div style={{ flex: 1, display: "flex", }}>
                     {views[view].preffix}

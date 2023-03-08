@@ -15069,7 +15069,8 @@ const xx = ou({
     boxShadow: "0 3px 6px -4px rgb(0 0 0 / 12%), 0 6px 16px 0 rgb(0 0 0 / 8%), 0 6px 15px 4px rgb(0 0 0 / 5%)"
   },
   ISYlayout: {
-    position: "relative"
+    position: "relative",
+    fontFamily: "'Inter', sans-serif"
   },
   ISYtitle: {
     position: "absolute",
@@ -15130,27 +15131,15 @@ function wx(e) {
     }
   };
   return /* @__PURE__ */ it("div", { className: t.ISYlayout, children: [
-    /* @__PURE__ */ ie(
-      ws,
-      {
-        className: t.ISYcard,
-        children: /* @__PURE__ */ ie("a", { href: "http://iseeyoutech.com", target: "_blank", children: /* @__PURE__ */ ie("img", { src: e0, style: { height: 60 } }) })
-      }
-    ),
+    /* @__PURE__ */ ie(ws, { className: t.ISYcard, children: /* @__PURE__ */ ie("a", { href: "http://iseeyoutech.com", target: "_blank", children: /* @__PURE__ */ ie("img", { src: e0, style: { height: 60 } }) }) }),
     l[r].content,
-    /* @__PURE__ */ ie(
-      ws,
-      {
-        className: t.ISYtitle,
-        children: /* @__PURE__ */ it("div", { style: { width: "100%", display: "flex" }, children: [
-          /* @__PURE__ */ it("div", { style: { flex: 1, display: "flex" }, children: [
-            l[r].preffix,
-            /* @__PURE__ */ ie("strong", { children: l[r].title })
-          ] }),
-          l[r].suffix
-        ] })
-      }
-    )
+    /* @__PURE__ */ ie(ws, { className: t.ISYtitle, children: /* @__PURE__ */ it("div", { style: { width: "100%", display: "flex" }, children: [
+      /* @__PURE__ */ it("div", { style: { flex: 1, display: "flex" }, children: [
+        l[r].preffix,
+        /* @__PURE__ */ ie("strong", { children: l[r].title })
+      ] }),
+      l[r].suffix
+    ] }) })
   ] });
 }
 const Ax = ou({

@@ -1,9 +1,9 @@
-
-
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap');
+
 body {
-    font-family: 'Inter', sans-serif;
+	font-family: 'Inter', sans-serif;
 }
+
 // @import '/node_modules/tiny-ui/lib/style/normalise';
 @import './Theme/_variable.scss';
 @import '/node_modules/tiny-ui/lib/style/animation';
@@ -106,15 +106,17 @@ body {
 	0% {
 		background-position: 0% 50%;
 	}
+
 	50% {
 		background-position: 100% 50%;
 	}
+
 	100% {
 		background-position: 0% 50%;
 	}
 }
 
-.native-select{
+.native-select {
 	font-family: 'Inter', sans-serif;
 	width: 100%;
 	padding: 8px 12px;
@@ -126,7 +128,7 @@ body {
 
 
 
-.drop-area{
+.drop-area {
 	transition: 1s all ease-in-out;
 	width: 100%;
 	height: 100%;
@@ -134,7 +136,7 @@ body {
 	top: 0;
 	left: 0;
 	backdrop-filter: blur(3px);
-	
+
 	border-radius: 6px;
 	border-width: 2px;
 	border-radius: 2px;
@@ -143,8 +145,8 @@ body {
 	flex-direction: column;
 	justify-content: center;
 	gap: 24px;
-	
-	.title{
+
+	.title {
 		width: 100%;
 		text-align: center;
 		display: block;
@@ -155,12 +157,9 @@ body {
 
 
 .#{$prefix}-popover {
-	
 	&__content {
-	  padding: 6px 7px;
+		padding: 6px 7px;
 
 
 	}
-  
-	
-  }
+}
