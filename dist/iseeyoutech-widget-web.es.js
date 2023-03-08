@@ -15195,7 +15195,11 @@ const Ax = ou({
   }
 });
 function Rx(e) {
-  const t = Ax({}), [r, n] = pe(Ii("http://localhost:4030", { withCredentials: !0 })), [i, a] = pe(!1), [s, o] = pe(e == null ? void 0 : e.email), [l, c] = pe(e.nombre), [u, d] = pe(e == null ? void 0 : e.proyectoId);
+  const t = Ax({}), [r, n] = pe(Ii((e == null ? void 0 : e.VITE_APP_WEB_SERVICE) || "http://localhost:4030", { withCredentials: !0 })), [i, a] = pe(!1);
+  Ie(() => {
+    (e == null ? void 0 : e.email) !== s && o(e == null ? void 0 : e.email), (e == null ? void 0 : e.nombre) !== l && c(e == null ? void 0 : e.nombre), (e == null ? void 0 : e.proyectoId) !== u && d(e == null ? void 0 : e.proyectoId);
+  });
+  const [s, o] = pe(e == null ? void 0 : e.email), [l, c] = pe(e.nombre), [u, d] = pe(e == null ? void 0 : e.proyectoId);
   return /* @__PURE__ */ ie(Rf.Provider, { value: s, children: /* @__PURE__ */ ie(Tf.Provider, { value: l, children: /* @__PURE__ */ ie(If.Provider, { value: u, children: /* @__PURE__ */ ie(ia.Provider, { value: r, children: /* @__PURE__ */ ie(
     Ry,
     {

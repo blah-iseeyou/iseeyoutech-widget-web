@@ -44,9 +44,7 @@ const useStyle = createUseStyles({
 export default function (params) {
 
     const classes = useStyle({})
-
-
-
+    
     let [view, setView] = useState('list')
     let [_id, setId] = useState('current')
 

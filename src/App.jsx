@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react'
+import { useState, useContext, useEffect } from 'react'
 import reactLogo from './assets/react.svg'
 
 import { AiFillBug, AiFillPlusCircle } from 'react-icons/ai'
@@ -71,8 +71,23 @@ function App(props) {
 
   const classes = useStyle({})
 
-  const [socket, setSocket] = useState(io(import.meta.env.VITE_APP_WEB_SERVICE, { withCredentials: true, }))
+  const [socket, setSocket] = useState(io(props?.VITE_APP_WEB_SERVICE || import.meta.env.VITE_APP_WEB_SERVICE, { withCredentials: true, }))
   const [visible, setVisible] = useState(false)
+
+
+  useEffect(() => {
+
+    if (props?.email !== email)
+      setEmail(props?.email)
+
+    if (props?.nombre !== nombre)
+      setNombre(props?.nombre)
+
+    if (props?.proyectoId !== proyectoId)
+      setProyectoId(props?.proyectoId)
+
+  })
+
 
   const [email, setEmail] = useState(props?.email)
   const [nombre, setNombre] = useState(props.nombre)
