@@ -95,6 +95,7 @@ function App(props) {
       })
     })
 
+    //Debo eliminar los on cuando se destruyte el comonponete
     return () => {
 
       // cliente/tickets/chat/notification

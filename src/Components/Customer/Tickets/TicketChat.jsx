@@ -51,46 +51,35 @@ export default function ({ ticket_id }) {
   let cUploader
 
   useEffect(() => {
-
+    
     document.addEventListener('keyup', keyUp);
     document.addEventListener('keydown', keyDown);
 
-    socket.on("chat/messages", getChat)
-    socket.on("cliente/chat/message", addMessage)
+    
+    socket.on("/cliente/tickets/chat", getChat)
+    socket.on("/cliente/tickets/chat/add", addMessage)
+    
+    socket.emit("/cliente/tickets/chat", {
+        ticket_id,
+        page: messages.page,
+        limit: messages.limit,
+        ...params
+    })            
 
-    socket.emit("cliente/chat", { ticket_id, ...params })
-
-    // // let uploader = new SocketIOFileClient(socket);
-
-    // // uploader.on('stream', (file) => {
-    // //   // let { filesUploaded } = this.state
-    // //   // filesUploaded[file.uploadId].progress = (file.size / file.sent) * 100
-    // //   // this.setState({ filesUploaded })
-    // // })
-    // // uploader.on('complete', (file) => {
-    // //   // let { filesUploaded } = this.state
-    // //   // filesUploaded[file.uploadId].progress = 100
-    // //   // filesUploaded[file.uploadId].filename = file.name
-    // //   // this.setState({ filesUploaded })
-    // // })
-    // // uploader.on('error', function (err) {
-    // //   // console.log('Error!', err);
-    // //   // message.error("No fue posible subir el archivo")
-    // // })
-    // // uploader.on('abort', function (fileInfo) {
-    // //   // console.log('Aborted: ', fileInfo);
-    // //   // message.error("El proceso fue abortado")
-    // // })
-    // // cUploader = uploader
-
+    // socket.emit("cliente/chat", { ticket_id, ...params })
+    
 
     return () => {
+      socket.emit("/admin/tickets/chat/off", ticket_id)
+
+      socket.removeListener('/cliente/tickets/chat')
+      socket.removeListener('/cliente/tickets/chat/add')
+      
       document.removeEventListener('keyup', keyUp);
       document.removeEventListener('keydown', keyDown);
 
-      socket.removeListener('cliente/chat')
-      socket.removeListener('cliente/chat/messages')
-      socket.removeListener('cliente/chat/message')
+
+
     }
   }, [])
 
