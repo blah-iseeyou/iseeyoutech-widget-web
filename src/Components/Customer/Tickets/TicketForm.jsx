@@ -67,7 +67,7 @@ export default function ({ setView }) {
     const onFinish = (values) => {
         console.log("values", values)
         setLoading(true)
-        socket.emit("cliente/tickets/add", {
+        socket.emit("/cliente/tickets/add", {
             ...values,
             evidencias: evidencias?.map(e => ({ name: e.name, buffer: e })),
             ...params,
@@ -75,22 +75,22 @@ export default function ({ setView }) {
     }
 
     useEffect(() => {
-        socket.on("cliente/tickets/add-success", () => {
+        socket.on("/cliente/tickets/success", () => {
             Notification.success({
                 title: 'Ticket Creado',
                 placement: "bottomRight",
             })
             setView("list")
         })
-        socket.on("cliente/tickets/add-error", () => {
+        socket.on("cliente/tickets/error", () => {
             Notification.error({
                 title: 'Ticket Creado',
                 placement: "bottomRight",
             })
         })
         return () => {
-            socket.removeEventListener("cliente/tickets/add-success")
-            socket.removeEventListener("cliente/tickets/add-error")
+            socket.removeEventListener("/cliente/tickets/success")
+            socket.removeEventListener("/cliente/tickets/error")
         }
     }, [])
 
