@@ -67,7 +67,14 @@ const useStyle = createUseStyles({
   }
 })
 
-const { Text } = Typography
+function truncateText(text, maxLength = 50) {
+  if (text.length <= maxLength) {
+    return text;
+  }
+  return text.substring(0, maxLength - 3) + '...';
+}
+
+const { Text, } = Typography
 
 function App(props) {
 
@@ -83,14 +90,15 @@ function App(props) {
   const [started, setStarted] = useState(false)
   const [count, setCount] = useState(0)
 
-
   useEffect(() => {
     socket.on("cliente/tickets/chat/count", setCount)
-    socket.on("cliente/tickets/chat/notification", (mensaje) => {
+    socket.on("/cliente/tickets/chat/notification", (mensaje) => {
       console.log("e", mensaje);
       Notification.open({
-        title: <Text>Has recibido un mensaje de {mensaje.autor?.nombre} {mensaje.autor?.apellidos}</Text>,
-        description: <Text >{mensaje.texto}</Text>,
+        description: <>
+          <Text style={{ display: 'block', fontSize: 12 }}><strong>{mensaje.autor?.nombre} {mensaje.autor?.apellidos}</strong> ha dicho:</Text>
+          <Text style={{ fontSize: 16, marginTop: 10 }}>{truncateText(mensaje.texto)}</Text>
+        </>,
         placement: "bottomRight",
       })
     })

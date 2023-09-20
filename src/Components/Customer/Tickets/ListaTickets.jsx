@@ -47,12 +47,8 @@ let estatuses = [
 estatuses = estatuses.map(e => ({ ...e, ligth: Color(e.color).fade(0.8).hexa() }))
 
 function ItemList({ estatus, asunto, setView, mensajes, _id, ...args }) {
-
-    console.log("ar", args)
-
-
+    // console.log("ar", args)
     let { color, title, key, ligth } = estatuses[(estatus ?? 1)]
-
     let [visibleActions, setVisibleActions] = useState()
 
     return <div style={{ display: "flex", marginTop: 12, flexDirection: "row", border: "1px solid " + ligth, padding: "5px", borderRadius: 6, justifyContent: "space-between", cursor: "pointer" }}
@@ -78,30 +74,35 @@ function ItemList({ estatus, asunto, setView, mensajes, _id, ...args }) {
     </div>
 }
 
-
 export default function ({ pagination, setPagination, setView }) {
-
     let params = getSign()
     const socket = useContext(Socket)
-
-
+    
     useEffect(() => {
-        socket.emit("/cliente/tickets", {
-            page: pagination.page,
-            limit: pagination.limit,
-            ...params
-        })
+        getTickets()
         socket.on("/cliente/tickets", (e) => {
-
             console.log("x", e)
             setPagination(e)
         })
+        socket.on("/cliente/tickets/list/update", () => getTickets())
         return () => {
             socket.removeEventListener("/cliente/tickets")
+            socket.removeEventListener("/cliente/tickets/list/update")
         }
     }, [])
 
-
+    const getTickets = (
+        {
+            page = pagination.page,
+            limit = pagination.limit,
+        } = pagination
+    ) => {
+        socket.emit("/cliente/tickets", {
+            page,
+            limit,
+            ...params
+        })
+    }
 
     return <div style={{ minWidth: 300, minHeight: 580, position: "relative", display: "flex", flexDirection: 'column', padding: "6px 7px" }}>
         <Layout style={{ flex: 1, display: "flex", flexDirection: 'column' }}>
@@ -110,7 +111,9 @@ export default function ({ pagination, setPagination, setView }) {
                 <Input placeholder='Buscar...' style={{ margin: "1.5em 0 1.2em 0" }} />
                 {pagination.data.map(e => <ItemList {...e} setView={setView} />)}
             </div>
-            <Pagination total={pagination.total} pageSize={pagination.limit} size="sm" style={{ margin: "15px 0 15px 0" }} />
+            <Pagination
+                total={pagination.total}
+                pagesize={pagination.limit} size="sm" style={{ margin: "15px 0 15px 0" }} />
         </Layout>
         <Button btnType="danger" style={{ width: "100%" }} onClick={() => setView('form')}>Nueva Incidencia</Button>
     </div>
