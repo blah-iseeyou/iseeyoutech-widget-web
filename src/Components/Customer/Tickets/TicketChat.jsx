@@ -36,9 +36,7 @@ class TicketChat extends React.Component {
     this.keyUp = this.keyUp.bind(this);
     this.keyDown = this.keyDown.bind(this);
   }
-
-
-
+  
   componentDidMount(){
     const { socket, params, ticket_id } = this.props
     const { messages } = this.state
@@ -55,7 +53,6 @@ class TicketChat extends React.Component {
       limit: messages.limit,
       ...params
     })
-
   }
 
   componentWillUnmount(){

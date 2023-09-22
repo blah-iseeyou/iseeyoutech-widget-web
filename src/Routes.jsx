@@ -42,78 +42,178 @@ const useStyle = createUseStyles({
     }
 })
 
-export default function (params) {
 
-    const classes = useStyle({})
-    
-    let [view, setView] = useState('list')
-    let [_id, setId] = useState('current')
+class Router extends React.Component{
 
-    let [pagination, setPagination] = useState({
-        data: [],
+    state = {
+        // view: 'list',
+        // _id: 'current',
+        pagination: {
+            data: [],
 
-        page: 1,
-        limit: 20,
+            page: 1,
+            limit: 20,
 
-        total: 0,
-        pages: 0
-    })
-
-    let views = {
-        list: {
-            title: 'Lista de Tickets',
-            content: <ListaTickets
-                pagination={pagination}
-                setPagination={setPagination}
-                setView={(view,_id) => {
-                    setView(view)
-                    setId(_id)
-                }}
-            />
-        },
-        chat: {
-            title: 'Contacto con Soporte',
-            content: <TicketChat
-                ticket_id={_id}
-                setView={setView}
-            />,
-            preffix: <Space style={{ position: "relative", marginRight: 6, marginTop: 2 }}>
-                <AiOutlineLeft onClick={() => setView("list")} />
-            </Space>,
-            suffix: <Space style={{ position: "relative", marginRight: 6, marginTop: 2 }}>
-                <AiOutlineReload onClick={() => window.location.reload()} />
-            </Space>
-        },
-        form: {
-            title: 'Nueva Incidencia',
-            content: <TicketForm
-                setView={setView}
-            />,
-            preffix: <Space style={{ position: "relative", marginRight: 6, marginTop: 2 }}>
-                <AiOutlineLeft onClick={() => setView("list")} />
-            </Space>,
-            suffix: <Space style={{ position: "relative", marginRight: 6, marginTop: 2 }}>
-                <AiOutlineReload onClick={() => window.location.reload()} />
-            </Space>
+            total: 0,
+            pages: 0
         }
     }
 
-    return <div className={classes.ISYlayout}>
-        <Card className={classes.ISYcard}>
-            <a href='http://iseeyoutech.com' target="_blank"><img src={img} style={{ height: 60 }} /></a>
-        </Card>
-        <Card className={classes.ISYtitle}>
-            <div style={{ width: "100%", display: "flex", }}>
-                <div style={{ flex: 1, display: "flex", }}>
-                    {views[view].preffix}
-                    <strong>{views[view].title}</strong>
+    // setView = (view) => this.setState({ view })
+    // setId = (_id) => this.setState({ _id })
+    setPagination = (pagination) => this.setState({ pagination })
+
+    getViews = () => {
+
+        const { setPagination } = this
+        const { view, setView, _id, setId } = this.props
+        const { pagination  } = this.state
+
+        return {
+            list: {
+                title: 'Lista de Tickets',
+                content: <ListaTickets
+                    pagination={pagination}
+                    setPagination={setPagination}
+                    setView={(view,_id) => {
+                        setView(view)
+                        setId(_id)
+                    }}
+                />
+            },
+            chat: {
+                title: 'Contacto con Soporte',
+                content: <TicketChat
+                    ticket_id={_id}
+                    setView={setView}
+                />,
+                preffix: <Space style={{ position: "relative", marginRight: 6, marginTop: 2 }}>
+                    <AiOutlineLeft onClick={() => setView("list")} />
+                </Space>,
+                suffix: <Space style={{ position: "relative", marginRight: 6, marginTop: 2 }}>
+                    <AiOutlineReload onClick={() => window.location.reload()} />
+                </Space>
+            },
+            form: {
+                title: 'Nueva Incidencia',
+                content: <TicketForm
+                    setView={setView}
+                />,
+                preffix: <Space style={{ position: "relative", marginRight: 6, marginTop: 2 }}>
+                    <AiOutlineLeft onClick={() => setView("list")} />
+                </Space>,
+                suffix: <Space style={{ position: "relative", marginRight: 6, marginTop: 2 }}>
+                    <AiOutlineReload onClick={() => window.location.reload()} />
+                </Space>
+            }
+        }
+
+
+    }
+
+    render (){
+
+        const { classes, view, setView, setId, _id } = this.props
+        const { getViews,  setPagination } = this
+        // const {   } = this.state
+        const views = getViews()
+
+        return <div className={classes.ISYlayout}>
+            <Card className={classes.ISYcard}>
+                <a href='http://iseeyoutech.com' target="_blank"><img src={img} style={{ height: 60 }} /></a>
+            </Card>
+            <Card className={classes.ISYtitle}>
+                <div style={{ width: "100%", display: "flex", }}>
+                    <div style={{ flex: 1, display: "flex", }}>
+                        {views[view].preffix}
+                        <strong>{views[view].title}</strong>
+                    </div>
+                    {views[view].suffix}
                 </div>
-                {views[view].suffix}
-            </div>
-        </Card>
-        {views[view].content}
-
-    </div>
-
+            </Card>
+            {views[view].content}
+        </div>
+    }
 }
+
+export default React.forwardRef(function MyInput(props, ref) {
+    const classes = useStyle({})
+    return <Router classes={classes} {...props} ref={ref} />
+
+})
+
+// export default function (params) {
+
+//     
+    
+    // let [view, setView] = useState('list')
+    // let [_id, setId] = useState('current')
+
+    // let [pagination, setPagination] = useState({
+    //     data: [],
+
+    //     page: 1,
+    //     limit: 20,
+
+    //     total: 0,
+    //     pages: 0
+    // })
+
+    // let views = {
+    //     list: {
+    //         title: 'Lista de Tickets',
+    //         content: <ListaTickets
+    //             pagination={pagination}
+    //             setPagination={setPagination}
+    //             setView={(view,_id) => {
+    //                 setView(view)
+    //                 setId(_id)
+    //             }}
+    //         />
+    //     },
+    //     chat: {
+    //         title: 'Contacto con Soporte',
+    //         content: <TicketChat
+    //             ticket_id={_id}
+    //             setView={setView}
+    //         />,
+    //         preffix: <Space style={{ position: "relative", marginRight: 6, marginTop: 2 }}>
+    //             <AiOutlineLeft onClick={() => setView("list")} />
+    //         </Space>,
+    //         suffix: <Space style={{ position: "relative", marginRight: 6, marginTop: 2 }}>
+    //             <AiOutlineReload onClick={() => window.location.reload()} />
+    //         </Space>
+    //     },
+    //     form: {
+    //         title: 'Nueva Incidencia',
+    //         content: <TicketForm
+    //             setView={setView}
+    //         />,
+    //         preffix: <Space style={{ position: "relative", marginRight: 6, marginTop: 2 }}>
+    //             <AiOutlineLeft onClick={() => setView("list")} />
+    //         </Space>,
+    //         suffix: <Space style={{ position: "relative", marginRight: 6, marginTop: 2 }}>
+    //             <AiOutlineReload onClick={() => window.location.reload()} />
+    //         </Space>
+    //     }
+    // }
+
+    // return <div className={classes.ISYlayout}>
+    //     <Card className={classes.ISYcard}>
+    //         <a href='http://iseeyoutech.com' target="_blank"><img src={img} style={{ height: 60 }} /></a>
+    //     </Card>
+    //     <Card className={classes.ISYtitle}>
+    //         <div style={{ width: "100%", display: "flex", }}>
+    //             <div style={{ flex: 1, display: "flex", }}>
+    //                 {views[view].preffix}
+    //                 <strong>{views[view].title}</strong>
+    //             </div>
+    //             {views[view].suffix}
+    //         </div>
+    //     </Card>
+    //     {views[view].content}
+
+    // </div>
+
+// }
 

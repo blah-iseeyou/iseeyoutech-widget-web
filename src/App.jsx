@@ -1,4 +1,4 @@
-import { useState, useContext, useEffect } from 'react'
+import React, { useState, useContext, useEffect, useRef } from 'react'
 import reactLogo from './assets/react.svg'
 
 import { AiFillBug, AiFillPlusCircle } from 'react-icons/ai'
@@ -81,7 +81,7 @@ function App(props) {
   const classes = useStyle({})
 
   const [URL, setURL] = useState(props?.URL || import.meta.env.VITE_APP_WEB_SERVICE)
-  const [socket, setSocket] = useState(io(URL, { withCredentials: true, }))
+  const [socket] = useState(io(URL, { withCredentials: true, }))
   const [visible, setVisible] = useState(false)
   const [email, setEmail] = useState(props?.email)
   const [nombre, setNombre] = useState(props.nombre)
@@ -89,6 +89,14 @@ function App(props) {
 
   const [started, setStarted] = useState(false)
   const [count, setCount] = useState(0)
+
+
+  const [view, setView] = useState('list')
+  // _id: 'current',
+  const [_id, setId] = useState('list')
+
+  const ref = React.useRef()
+  const popOverRef = React.useRef()
 
   useEffect(() => {
     socket.on("cliente/tickets/chat/count", setCount)
@@ -100,6 +108,12 @@ function App(props) {
           <Text style={{ fontSize: 16, marginTop: 10 }}>{truncateText(mensaje.texto)}</Text>
         </>,
         placement: "bottomRight",
+        onClick: () => {
+          setVisible(true)
+          setId(mensaje.ticket_id)
+          setView('chat')
+          ref.current
+        },
       })
     })
 
@@ -129,10 +143,7 @@ function App(props) {
     }
 
   })
-
-
-
-
+  
   return (
     <URL_WS.Provider value={URL}>
       <Email.Provider value={email}>
@@ -140,8 +151,15 @@ function App(props) {
           <ProyectoId.Provider value={proyectoId}>
             <Socket.Provider value={socket}>
               <Popover
+                itemRef={popOverRef}
+                visible={visible}
                 onVisibleChange={setVisible}
-                content={<Routes />}
+                content={<Routes
+                    ref={ref}
+                    view={view}
+                    _id={_id}
+                    setId={setId}
+                    setView={setView} />}
                 placement="top-start">
                 <div style={{ position: 'fixed', bottom: 0, left: 10, zIndex: 100 }}>
                   <button className={classes.ticketButton} >
